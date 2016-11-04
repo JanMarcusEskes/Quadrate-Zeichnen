@@ -14,9 +14,17 @@ namespace Quadrate_zeichnen
       char lücke = 'X';
 
       Console.Write("Aussengrenze: ");
-      int.TryParse(Console.ReadLine(), out breite);
+      if (int.TryParse(Console.ReadLine(), out breite) == false || breite < 1 || breite > 25)
+      { Console.WriteLine("Sie haben einen nicht zugelassenen Wert eingegeben!"); Console.Read(); return; }
+
       Console.Write("Randbreite  : ");
-      int.TryParse(Console.ReadLine(), out rand);
+      if (int.TryParse(Console.ReadLine(), out rand) == false || rand < 0 || rand > 25)
+      { Console.WriteLine("Sie haben einen nicht zugelassenen Wert eingegeben!"); Console.Read(); return; }
+
+      if (breite <= rand * 2)
+      { Console.WriteLine("Der Rand wäre breiter als das Quadrat und wird dadurch ignoriert"); }
+
+      Console.WriteLine();
 
       for (int zeile = 0; zeile < breite; zeile++)
       {
